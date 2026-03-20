@@ -1,0 +1,1 @@
+Read the file at `operating_system/HEARTBEAT.md` and complete the tasks described there. This is a test of the new `{{filepath}}` include syntax. The `HEARTBEAT.md` file now includes `SOUL.md`. Verify that the final rendered prompt you receive contains the full content of both files.
