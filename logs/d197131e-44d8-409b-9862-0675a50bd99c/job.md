@@ -1,0 +1,1 @@
+Create a new cron job that runs every weekday at 8am Eastern Time and triggers a new agent job. The agent job should be to read the file at operating_system/DAILY_BRIEFING.md and complete the tasks described there. The cron job should be named "daily-briefing".
