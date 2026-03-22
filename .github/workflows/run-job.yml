@@ -1,9 +1,7 @@
 name: Run thepopebot Job
 
 on:
-  push:
-    branches:
-      - 'job/**'
+  create:
 
 jobs:
   run-agent:
