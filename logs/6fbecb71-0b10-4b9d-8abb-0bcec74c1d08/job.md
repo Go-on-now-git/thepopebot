@@ -1,0 +1,1 @@
+Consolidate all merged job logs into one summary report. Read the .jsonl files from these three completed jobs and create FINAL_SUMMARY.md showing everything discovered: logs/62d797b7-eb9d-4c36-81bc-5ee21664be4d/, logs/faf69dd0-129e-45b9-9bf2-e89600ce8cb6/, logs/21b9b8e2-5e80-451c-a1bc-d788aed578f4/
