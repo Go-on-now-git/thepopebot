@@ -1,6 +1,103 @@
-# Daily Financial Report
+# Daily Financial Report — March 27, 2026
 
-> No report has been generated yet. The first report will be created at the next scheduled run (6:00 AM Pacific, weekdays).
+> Generated at 14:00 UTC | Pre-market briefing
+
+---
+
+## ⚠️ Data Unavailable
+
+**This report could not be populated with live market data.**
+
+The Brave Search API key (`BRAVE_API_KEY`) is not configured in the environment. To enable live market data retrieval:
+
+1. Obtain a Brave Search API key from https://api-dashboard.search.brave.com/
+2. Add `BRAVE_API_KEY` to the `LLM_SECRETS` configuration for this agent
+3. Re-run the financial advisor job
+
+---
+
+## 📊 Major Indices
+
+| Index | Last Close | Change | % Change |
+|-------|-----------|--------|----------|
+| S&P 500 | Data unavailable | — | — |
+| Dow Jones | Data unavailable | — | — |
+| Nasdaq Composite | Data unavailable | — | — |
+| Russell 2000 | Data unavailable | — | — |
+
+**Pre-market Futures:**
+- Data unavailable — search capability not configured
+
+---
+
+## 🌍 Global Markets
+
+### Asia-Pacific
+- Data unavailable — search capability not configured
+
+### Europe
+- Data unavailable — search capability not configured
+
+---
+
+## 📈 Bonds & Rates
+
+- **10-Year Treasury Yield:** Data unavailable
+- **2-Year Treasury Yield:** Data unavailable
+- **2s/10s Spread:** Data unavailable
+- **Fed Funds Rate:** Data unavailable
+
+---
+
+## 🛢️ Commodities
+
+| Commodity | Price | Change |
+|-----------|-------|--------|
+| WTI Crude Oil | Data unavailable | — |
+| Gold | Data unavailable | — |
+| Silver | Data unavailable | — |
+| Natural Gas | Data unavailable | — |
+
+---
+
+## 💱 Currencies
+
+- **DXY (Dollar Index):** Data unavailable
+- **EUR/USD:** Data unavailable
+- **USD/JPY:** Data unavailable
+- **GBP/USD:** Data unavailable
+
+---
+
+## 📰 Key Headlines
+
+1. Data unavailable — search capability not configured
+2. —
+3. —
+4. —
+5. —
+
+---
+
+## 🏭 Sector Watch
+
+- **Top Performing:** Data unavailable
+- **Worst Performing:** Data unavailable
+- **Notable Movers:** Data unavailable
+
+---
+
+## 📅 Economic Calendar (Today)
+
+| Time (ET) | Event | Consensus | Prior |
+|-----------|-------|-----------|-------|
+| — | Data unavailable | — | — |
+
+---
+
+## 🔍 Analysis & Outlook
+
+_Unable to provide market analysis due to search capability not being configured. Please ensure `BRAVE_API_KEY` is added to `LLM_SECRETS` to enable live market data retrieval._
 
 ---
 
