@@ -1,5 +1,6 @@
 const express = require('express');
 const helmet = require('helmet');
+const crypto = require('crypto');
 const fs = require('fs');
 const path = require('path');
 require('dotenv').config();
@@ -91,13 +92,17 @@ app.post('/telegram/register', async (req, res) => {
 
 // POST /telegram/webhook - receive Telegram updates
 app.post('/telegram/webhook', async (req, res) => {
-  // Validate secret token if configured
-  // Always return 200 to prevent Telegram retry loops on mismatch
+  // Validate secret token — return 200 (not 401) to prevent Telegram retry floods
   if (TELEGRAM_WEBHOOK_SECRET) {
-    const headerSecret = req.headers['x-telegram-bot-api-secret-token'];
-    if (headerSecret !== TELEGRAM_WEBHOOK_SECRET) {
-      return res.status(200).json({ ok: true });
-    }
+    const headerSecret = req.headers['x-telegram-bot-api-secret-token'] || '';
+    let valid = false;
+    try {
+      valid = crypto.timingSafeEqual(
+        Buffer.from(headerSecret, 'utf8'),
+        Buffer.from(TELEGRAM_WEBHOOK_SECRET, 'utf8')
+      );
+    } catch { valid = false; }
+    if (!valid) return res.status(200).json({ ok: true });
   }
 
   const update = req.body;
@@ -105,6 +110,7 @@ app.post('/telegram/webhook', async (req, res) => {
 
   if (message && message.chat && telegramBotToken) {
     const chatId = String(message.chat.id);
+    console.log(`[Telegram] Received message from ${chatId}: ${message.text || '[non-text]'}`);
 
     let messageText = null;
 
@@ -226,9 +232,9 @@ async function summarizeJob(results) {
         'anthropic-version': '2023-06-01',
       },
       body: JSON.stringify({
-        model: process.env.EVENT_HANDLER_MODEL || 'claude-sonnet-4-20250514',
+        model: 'claude-haiku-4-5',
         max_tokens: 1024,
-        system: systemPrompt,
+        system: systemPrompt || 'Summarize the following job results.',
         messages: [{ role: 'user', content: userMessage }],
       }),
     });
@@ -245,12 +251,16 @@ async function summarizeJob(results) {
 
 // POST /github/webhook - receive GitHub PR notifications
 app.post('/github/webhook', async (req, res) => {
-  // Validate webhook secret
   if (GH_WEBHOOK_SECRET) {
-    const headerSecret = req.headers['x-github-webhook-secret-token'];
-    if (headerSecret !== GH_WEBHOOK_SECRET) {
-      return res.status(401).json({ error: 'Unauthorized' });
-    }
+    const headerSecret = req.headers['x-github-webhook-secret-token'] || '';
+    let valid = false;
+    try {
+      valid = crypto.timingSafeEqual(
+        Buffer.from(headerSecret, 'utf8'),
+        Buffer.from(GH_WEBHOOK_SECRET, 'utf8')
+      );
+    } catch { valid = false; }
+    if (!valid) return res.status(401).json({ error: 'Unauthorized' });
   }
 
   const event = req.headers['x-github-event'];
